@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>For Messa Natalie Salim 💖</title>
+  <link href="https://fonts.googleapis.com/css2?family=VT323&family=Fredoka:wght@400;600&family=Sacramento&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: #fce4ec;
+      background-image: radial-gradient(#f8bbd0 20%, transparent 20%);
+      background-size: 15px 15px;
+      font-family: 'Fredoka', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      overflow-x: hidden;
+      padding: 15px;
+      color: #880e4f;
+    }
+
+    /* Container Tape Cassette Player */
+    .player-card {
+      width: 100%;
+      max-width: 360px;
+      background: #fff0f3;
+      border: 4px solid #ff758f;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(233, 30, 99, 0.2);
+      padding: 20px;
+      text-align: center;
+      position: relative;
+    }
+
+    .recipient-tag {
+      font-family: 'Sacramento', cursive;
+      font-size: 26px;
+      color: #c9184a;
+      margin-bottom: 5px;
+    }
+
+    .player-header {
+      font-family: 'VT323', monospace;
+      font-size: 20px;
+      color: #a4133c;
+      letter-spacing: 1px;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+    }
+
+    /* Cassette Tape Visual */
+    .cassette-box {
+      background: #ffb3c1;
+      border: 3px solid #ff4d6d;
+      border-radius: 14px;
+      padding: 15px;
+      position: relative;
+      box-shadow: inset 0 0 10px rgba(255, 77, 109, 0.3);
+      margin-bottom: 20px;
+    }
+
+    .cassette-label {
+      background: #ffffff;
+      color: #800f2f;
+      padding: 8px;
+      border-radius: 8px;
+      font-family: 'VT323', monospace;
+      font-size: 16px;
+      border: 2px dashed #ff4d6d;
+      margin-bottom: 12px;
+      font-weight: bold;
+    }
+
+    .reels-wrapper {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      background: #590d22;
+      padding: 12px;
+      border-radius: 10px;
+      border: 2px solid #ff4d6d;
+    }
+
+    .reel {
+      width: 42px;
+      height: 42px;
+      background: #ffffff;
+      border: 5px solid #ff758f;
+      border-radius: 50%;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .reel::after {
+      content: '';
+      width: 10px;
+      height: 10px;
+      background: #590d22;
+      border-radius: 50%;
+    }
+
+    /* Animasi Putar Kaset */
+    .playing .reel {
+      animation: spinReel 2s linear infinite;
+    }
+
+    @keyframes spinReel {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Display Lyrics */
+    .lyrics-box {
+      background: #ffffff;
+      border: 2px solid #ff758f;
+      border-radius: 12px;
+      padding: 15px;
+      min-height: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+    }
+
+    .lyrics-text {
+      color: #a4133c;
+      font-family: 'VT323', monospace;
+      font-size: 20px;
+      line-height: 1.3;
+    }
+
+    /* Controls */
+    .controls-btn {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .btn-play {
+      background: #ff4d6d;
+      color: white;
+      border: 2px solid #a4133c;
+      padding: 12px 28px;
+      border-radius: 30px;
+      font-family: 'Fredoka', sans-serif;
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 4px 0 #a4133c;
+      transition: transform 0.1s;
+    }
+
+    .btn-play:active {
+      transform: translateY(3px);
+      box-shadow: 0 1px 0 #a4133c;
+    }
+
+    .secret-msg-btn {
+      background: #ffffff;
+      color: #c9184a;
+      border: 2px solid #ff758f;
+      padding: 10px 16px;
+      border-radius: 20px;
+      font-family: 'Fredoka', sans-serif;
+      font-size: 12px;
+      margin-top: 15px;
+      cursor: pointer;
+      display: none;
+      box-shadow: 0 3px 0 #ffb3c1;
+    }
+
+    /* Note Modal */
+    .note-modal {
+      display: none;
+      background: #ffffff;
+      color: #590d22;
+      border: 2px dashed #ff4d6d;
+      border-radius: 14px;
+      padding: 15px;
+      margin-top: 15px;
+      font-size: 12px;
+      line-height: 1.6;
+      text-align: left;
+      animation: fadeIn 0.4s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="player-card">
+    <div class="recipient-tag">For Messa Natalie Salim ♡</div>
+    <div class="player-header">🎀 Sweet Cassette Player 🎀</div>
+
+    <!-- Tape Visual -->
+    <div class="cassette-box" id="cassetteBox">
+      <div class="cassette-label">SIDE A: Risk It All - Bruno Mars</div>
+      <div class="reels-wrapper">
+        <div class="reel"></div>
+        <div style="color: #ffb3c1; font-family: 'VT323', monospace;">LOVE MIX</div>
+        <div class="reel"></div>
+      </div>
+    </div>
+
+    <!-- Screen Lyrics -->
+    <div class="lyrics-box">
+      <div class="lyrics-text" id="lyricsDisplay">Press PLAY to start the music... 🎵</div>
+    </div>
+
+    <!-- Play Button -->
+    <div class="controls-btn">
+      <button class="btn-play" id="playBtn" onclick="togglePlay()">PLAY ▶</button>
+    </div>
+
+    <button class="secret-msg-btn" id="secretBtn" onclick="showSecretNote()">Open Special Message 💌</button>
+
+    <div class="note-modal" id="noteModal">
+      <b>Dear Messa Natalie Salim,</b><br><br>
+      Just like this song says, I'd risk it all for you. Thank you for bringing so much happiness and sweet moments into my life. You mean the world to me! ✨💖
+    </div>
+  </div>
+
+  <!-- Audio Element -->
+  <audio id="bgMusic" loop>
+    <source src="song.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    const audio = document.getElementById('bgMusic');
+    const playBtn = document.getElementById('playBtn');
+    const cassetteBox = document.getElementById('cassetteBox');
+    const lyricsDisplay = document.getElementById('lyricsDisplay');
+    const secretBtn = document.getElementById('secretBtn');
+
+    // English Quotes & Lyrics Lines
+    const lines = [
+      "I'd risk it all for you...",
+      "Because you are worth every risk...",
+      "Every moment with you feels like a dream...",
+      "You are my favorite person, Messa! ❤️"
+    ];
+
+    let lineIndex = 0;
+    let lyricInterval;
+
+    function togglePlay() {
+      if (audio.paused) {
+        audio.play().then(() => {
+          cassetteBox.classList.add('playing');
+          playBtn.innerText = 'PAUSE ⏸';
+          startLyrics();
+        }).catch((err) => {
+          // If audio file is missing, running animation & text fallback
+          console.log("Audio not found, playing visual only.");
+          cassetteBox.classList.add('playing');
+          playBtn.innerText = 'PAUSE ⏸';
+          startLyrics();
+        });
+      } else {
+        audio.pause();
+        cassetteBox.classList.remove('playing');
+        playBtn.innerText = 'PLAY ▶';
+        clearInterval(lyricInterval);
+      }
+    }
+
+    function startLyrics() {
+      clearInterval(lyricInterval);
+      lyricsDisplay.innerText = lines[lineIndex];
+      
+      lyricInterval = setInterval(() => {
+        lineIndex = (lineIndex + 1) % lines.length;
+        lyricsDisplay.innerText = lines[lineIndex];
+        
+        secretBtn.style.display = 'inline-block';
+      }, 3500);
+    }
+
+    function showSecretNote() {
+      document.getElementById('noteModal').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
