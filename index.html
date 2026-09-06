@@ -28,7 +28,6 @@
       color: #880e4f;
     }
 
-    /* Container Tape Cassette Player */
     .player-card {
       width: 100%;
       max-width: 360px;
@@ -43,14 +42,14 @@
 
     .recipient-tag {
       font-family: 'Sacramento', cursive;
-      font-size: 26px;
+      font-size: 28px;
       color: #c9184a;
-      margin-bottom: 5px;
+      margin-bottom: 2px;
     }
 
     .player-header {
       font-family: 'VT323', monospace;
-      font-size: 20px;
+      font-size: 18px;
       color: #a4133c;
       letter-spacing: 1px;
       margin-bottom: 15px;
@@ -65,18 +64,18 @@
       padding: 15px;
       position: relative;
       box-shadow: inset 0 0 10px rgba(255, 77, 109, 0.3);
-      margin-bottom: 20px;
+      margin-bottom: 15px;
     }
 
     .cassette-label {
       background: #ffffff;
       color: #800f2f;
-      padding: 8px;
+      padding: 6px;
       border-radius: 8px;
       font-family: 'VT323', monospace;
-      font-size: 16px;
+      font-size: 15px;
       border: 2px dashed #ff4d6d;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       font-weight: bold;
     }
 
@@ -85,14 +84,14 @@
       justify-content: space-around;
       align-items: center;
       background: #590d22;
-      padding: 12px;
+      padding: 10px;
       border-radius: 10px;
       border: 2px solid #ff4d6d;
     }
 
     .reel {
-      width: 42px;
-      height: 42px;
+      width: 38px;
+      height: 38px;
       background: #ffffff;
       border: 5px solid #ff758f;
       border-radius: 50%;
@@ -104,13 +103,12 @@
 
     .reel::after {
       content: '';
-      width: 10px;
-      height: 10px;
+      width: 8px;
+      height: 8px;
       background: #590d22;
       border-radius: 50%;
     }
 
-    /* Animasi Putar Kaset */
     .playing .reel {
       animation: spinReel 2s linear infinite;
     }
@@ -120,13 +118,13 @@
       100% { transform: rotate(360deg); }
     }
 
-    /* Display Lyrics */
+    /* Lyrics Display Screen */
     .lyrics-box {
       background: #ffffff;
       border: 2px solid #ff758f;
       border-radius: 12px;
-      padding: 15px;
-      min-height: 80px;
+      padding: 12px;
+      min-height: 85px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -137,25 +135,25 @@
     .lyrics-text {
       color: #a4133c;
       font-family: 'VT323', monospace;
-      font-size: 20px;
-      line-height: 1.3;
+      font-size: 19px;
+      line-height: 1.25;
     }
 
-    /* Controls */
     .controls-btn {
       display: flex;
       justify-content: center;
       gap: 15px;
+      margin-bottom: 15px;
     }
 
     .btn-play {
       background: #ff4d6d;
       color: white;
       border: 2px solid #a4133c;
-      padding: 12px 28px;
+      padding: 10px 24px;
       border-radius: 30px;
       font-family: 'Fredoka', sans-serif;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: bold;
       cursor: pointer;
       box-shadow: 0 4px 0 #a4133c;
@@ -167,21 +165,90 @@
       box-shadow: 0 1px 0 #a4133c;
     }
 
+    /* Photo Stack Section */
+    .photo-section-title {
+      font-size: 13px;
+      color: #a4133c;
+      margin: 15px 0 5px;
+      font-weight: 600;
+    }
+
+    .hint-text {
+      font-size: 10px;
+      color: #c9184a;
+      opacity: 0.8;
+      margin-bottom: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .memory-stack {
+      position: relative;
+      height: 230px;
+      margin: 10px 0 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.4s ease;
+    }
+
+    /* Ketika semua foto diswipe, tumpukan foto menciut */
+    .memory-stack.collapsed {
+      height: 0;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    .polaroid {
+      position: absolute;
+      width: 190px;
+      background: white;
+      padding: 10px 10px 20px 10px;
+      border-radius: 8px;
+      border: 1px solid #ffccd5;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+      cursor: grab;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      touch-action: none;
+    }
+
+    .polaroid img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 4px;
+      pointer-events: none;
+    }
+
+    .polaroid-caption {
+      font-family: 'Sacramento', cursive;
+      font-size: 18px;
+      margin-top: 6px;
+      color: #880e4f;
+      pointer-events: none;
+    }
+
+    .polaroid.swiped {
+      transform: translateX(-200%) rotate(-30deg) !important;
+      opacity: 0;
+      pointer-events: none;
+      display: none; /* Sembunyikan sepenuhnya dari flow layout */
+    }
+
     .secret-msg-btn {
       background: #ffffff;
       color: #c9184a;
       border: 2px solid #ff758f;
-      padding: 10px 16px;
+      padding: 10px 18px;
       border-radius: 20px;
       font-family: 'Fredoka', sans-serif;
       font-size: 12px;
-      margin-top: 15px;
       cursor: pointer;
       display: none;
       box-shadow: 0 3px 0 #ffb3c1;
+      margin: 10px auto 0;
+      transition: all 0.3s ease;
     }
 
-    /* Note Modal */
     .note-modal {
       display: none;
       background: #ffffff;
@@ -208,7 +275,6 @@
     <div class="recipient-tag">For Messa Natalie Salim ♡</div>
     <div class="player-header">🎀 Sweet Cassette Player 🎀</div>
 
-    <!-- Tape Visual -->
     <div class="cassette-box" id="cassetteBox">
       <div class="cassette-label">Risk It All - Bruno Mars</div>
       <div class="reels-wrapper">
@@ -218,26 +284,50 @@
       </div>
     </div>
 
-    <!-- Screen Lyrics -->
     <div class="lyrics-box">
-      <div class="lyrics-text" id="lyricsDisplay">Press PLAY to start the music... 🎵</div>
+      <div class="lyrics-text" id="lyricsDisplay">Press PLAY to start the song... 🎵</div>
     </div>
 
-    <!-- Play Button -->
     <div class="controls-btn">
       <button class="btn-play" id="playBtn" onclick="togglePlay()">PLAY ▶</button>
     </div>
 
-    <button class="secret-msg-btn" id="secretBtn" onclick="showSecretNote()">Open Special Message 💌</button>
+    <div class="photo-section-title" id="photoTitle">Her Beautiful Moments ✨</div>
+    <div class="hint-text" id="hintText">Swipe / drag top photo to see more of Messa! 📸</div>
+
+    <div class="memory-stack" id="memoryStack">
+      <div class="polaroid" style="transform: rotate(6deg) scale(0.92);">
+        <img src="foto5.jpeg" alt="Messa Photo 5">
+        <div class="polaroid-caption">Pretty & Lovely 💕</div>
+      </div>
+      <div class="polaroid" style="transform: rotate(-4deg) scale(0.94);">
+        <img src="foto4.jpeg" alt="Messa Photo 4">
+        <div class="polaroid-caption">Precious Smile ✨</div>
+      </div>
+      <div class="polaroid" style="transform: rotate(5deg) scale(0.96);">
+        <img src="foto3.jpeg" alt="Messa Photo 3">
+        <div class="polaroid-caption">Simply Stunning 🌸</div>
+      </div>
+      <div class="polaroid" style="transform: rotate(-3deg) scale(0.98);">
+        <img src="foto2.jpeg" alt="Messa Photo 2">
+        <div class="polaroid-caption">Most Adorable 😊</div>
+      </div>
+      <div class="polaroid" style="transform: rotate(2deg);">
+        <img src="foto1.jpeg" alt="Messa Photo 1">
+        <div class="polaroid-caption">My Favorite Person 🥰</div>
+      </div>
+    </div>
+
+    <button class="secret-msg-btn" id="secretBtn" onclick="showSecretNote()">Open Secret Note 💌</button>
 
     <div class="note-modal" id="noteModal">
-      <b>Dear Messa Natalie Salim,</b><br><br>
-      Just like this song says, I'd risk it all for you. Thank you for bringing so much happiness and sweet moments into my life. You mean the world to me! ✨💖
+      <b>Dearest Messa Natalie Salim,</b><br><br>
+      "There's nothing I won't do... I'd risk it all for you."<br>
+      Thank you for bringing so much warmth and happiness into my life. Every single moment with you is something I treasure forever! 💖✨
     </div>
   </div>
 
-  <!-- Audio Element -->
-  <audio id="bgMusic" loop>
+  <audio id="bgMusic" preload="auto">
     <source src="song.mp3" type="audio/mpeg">
   </audio>
 
@@ -247,54 +337,141 @@
     const cassetteBox = document.getElementById('cassetteBox');
     const lyricsDisplay = document.getElementById('lyricsDisplay');
     const secretBtn = document.getElementById('secretBtn');
+    const memoryStack = document.getElementById('memoryStack');
+    const photoTitle = document.getElementById('photoTitle');
+    const hintText = document.getElementById('hintText');
 
-    // English Quotes & Lyrics Lines
-    const lines = [
-      "I'd risk it all for you...",
-      "Because you are worth every risk...",
-      "Every moment with you feels like a dream...",
-      "You are my favorite person, Messa! ❤️"
+    // Array Logika Timestamp Presisi
+    const lyrics = [
+      { time: 0, text: "🎵 (Intro Instrumental) 🎶" },
+      { time: 22.29, text: "For just the chance to win your heart" },
+      { time: 27.55, text: "You could set the bar beyond the stars" },
+      { time: 33.64, text: "I'll do anything, anything you ask me to" },
+      { time: 43.71, text: "Say you want the moon" },
+      { time: 46.40, text: "Watch me learn to fly" },
+      { time: 49.04, text: "Ain't no mountain you could point to" },
+      { time: 52.00, text: "I wouldn't climb" },
+      { time: 54.77, text: "It's crazy, but it's true" },
+      { time: 57.60, text: "There's nothing I won't do" },
+      { time: 60.49, text: "I'd risk it all for you 💖" },
+      { time: 66.93, text: "To hold your hand and call you mine" },
+      { time: 72.20, text: "I'm tryna be your man" },
+      { time: 74.77, text: "'Til the end of time" },
+      { time: 77.56, text: "Oh, I'll do anything, anything you ask me to" },
+      { time: 88.03, text: "I would run through a fire" },
+      { time: 91.10, text: "Just to be by your side" },
+      { time: 94.19, text: "If your heart's on the line" },
+      { time: 97.00, text: "You could take mine" },
+      { time: 99.25, text: "It's crazy, but it's true" },
+      { time: 102.10, text: "There's nothing I won't do" },
+      { time: 105.12, text: "I'd risk it all for you" },
+      { time: 111.60, text: "I would swim across the sea just to show you" },
+      { time: 117.17, text: "Sacrifice my life just to hold you" },
+      { time: 122.20, text: "I could go on and on" },
+      { time: 125.00, text: "To prove that you belong" },
+      { time: 127.45, text: "Here in my arms" },
+      { time: 133.00, text: "🎵 (Accordion Solo) 🎶" },
+      { time: 154.99, text: "Say you want the moon" },
+      { time: 157.80, text: "Watch me learn to fly" },
+      { time: 160.73, text: "Ain't no mountain you could point to" },
+      { time: 163.70, text: "I wouldn't climb" },
+      { time: 166.25, text: "It's crazy, but it's true" },
+      { time: 169.10, text: "There's nothing I won't do" },
+      { time: 172.21, text: "I'd risk it all for you" },
+      { time: 177.63, text: "It's crazy, but it's true" },
+      { time: 180.50, text: "There's nothing I won't do" },
+      { time: 183.61, text: "I'd risk it all for you ❤️" }
     ];
-
-    let lineIndex = 0;
-    let lyricInterval;
 
     function togglePlay() {
       if (audio.paused) {
         audio.play().then(() => {
           cassetteBox.classList.add('playing');
           playBtn.innerText = 'PAUSE ⏸';
-          startLyrics();
+          secretBtn.style.display = 'block';
         }).catch((err) => {
-          // If audio file is missing, running animation & text fallback
-          console.log("Audio not found, playing visual only.");
-          cassetteBox.classList.add('playing');
-          playBtn.innerText = 'PAUSE ⏸';
-          startLyrics();
+          console.log("Audio load error:", err);
         });
       } else {
         audio.pause();
         cassetteBox.classList.remove('playing');
         playBtn.innerText = 'PLAY ▶';
-        clearInterval(lyricInterval);
       }
     }
 
-    function startLyrics() {
-      clearInterval(lyricInterval);
-      lyricsDisplay.innerText = lines[lineIndex];
-      
-      lyricInterval = setInterval(() => {
-        lineIndex = (lineIndex + 1) % lines.length;
-        lyricsDisplay.innerText = lines[lineIndex];
-        
-        secretBtn.style.display = 'inline-block';
-      }, 3500);
-    }
+    // Sinkronisasi Real-Time
+    audio.addEventListener('timeupdate', () => {
+      const cur = audio.currentTime;
+      for (let i = lyrics.length - 1; i >= 0; i--) {
+        if (cur >= lyrics[i].time) {
+          if (lyricsDisplay.innerText !== lyrics[i].text) {
+            lyricsDisplay.innerText = lyrics[i].text;
+          }
+          break;
+        }
+      }
+    });
+
+    audio.addEventListener('ended', () => {
+      cassetteBox.classList.remove('playing');
+      playBtn.innerText = 'PLAY ▶';
+    });
 
     function showSecretNote() {
       document.getElementById('noteModal').style.display = 'block';
     }
+
+    // Drag / Swipe Photos & Auto-Collapse Space
+    const cards = document.querySelectorAll('.polaroid');
+    let remainingCards = cards.length;
+
+    cards.forEach(card => {
+      let isDragging = false;
+      let startX = 0;
+      let currentX = 0;
+
+      const startDrag = (e) => {
+        isDragging = true;
+        startX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+        card.style.transition = 'none';
+      };
+
+      const doDrag = (e) => {
+        if (!isDragging) return;
+        currentX = (e.type.includes('touch') ? e.touches[0].clientX : e.clientX) - startX;
+        card.style.transform = `translateX(${currentX}px) rotate(${currentX * 0.1}deg)`;
+      };
+
+      const endDrag = () => {
+        if (!isDragging) return;
+        isDragging = false;
+        card.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
+
+        if (Math.abs(currentX) > 80) {
+          card.classList.add('swiped');
+          remainingCards--;
+
+          // Jika semua foto habis di-swipe, otomatis ciutkan space kosong
+          if (remainingCards === 0) {
+            setTimeout(() => {
+              memoryStack.classList.add('collapsed');
+              photoTitle.style.display = 'none';
+              hintText.style.display = 'none';
+            }, 300);
+          }
+        } else {
+          card.style.transform = '';
+        }
+      };
+
+      card.addEventListener('mousedown', startDrag);
+      card.addEventListener('mousemove', doDrag);
+      card.addEventListener('mouseup', endDrag);
+
+      card.addEventListener('touchstart', startDrag, { passive: true });
+      card.addEventListener('touchmove', doDrag, { passive: true });
+      card.addEventListener('touchend', endDrag);
+    });
   </script>
 </body>
 </html>
